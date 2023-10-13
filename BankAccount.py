@@ -37,12 +37,16 @@ class BankAccount:
     def withdraw(self):
         
         amount = float(input("Enter amount to be withdrawn: "))
-        assert self.balance > amount, "Incefficent balance to withdraw"
-        self.balance = self.balance - amount
-        print(f"Amount withdrawn: {amount}  New Balance: {self.balance}")
-        self.balance_info = open("balance_info.txt", "a")
-        self.balance_info.write(str(self.balance) + "\n")
-        self.balance_info.close()
+       # assert self.balance > amount, "Incefficent balance to withdraw"
+        if self.balance>=amount:
+            self.balance = self.balance - amount
+            print(f"Amount withdrawn: {amount}  New Balance: {self.balance}")
+            self.balance_info = open("balance_info.txt", "a")
+            self.balance_info.write(str(self.balance) + "\n")
+            self.balance_info.close()
+        else:
+            print("Insufficient Balance")
+            
         
     # display the function
     def display(self):
